@@ -16,7 +16,7 @@ export const Layout: React.FC<LayoutProps> = ({ children, activeSection, onSecti
     <div className="min-h-screen flex flex-col md:flex-row">
       {/* Mobile Header */}
       <header className="md:hidden bg-[#00422f] text-white p-5 flex justify-between items-center sticky top-0 z-50 shadow-md">
-        <div className="font-black text-xl tracking-wide">彰基 PD 防治網</div>
+        <div className="font-black text-xl tracking-wide">彰基 PD 腹膜炎防治網</div>
         <button
           onClick={() => setIsSidebarOpen(!isSidebarOpen)}
           className="bg-white/20 p-2 rounded-lg"
@@ -32,8 +32,8 @@ export const Layout: React.FC<LayoutProps> = ({ children, activeSection, onSecti
         md:translate-x-0 fixed md:static inset-y-0 left-0 w-72 bg-[#00422f] text-white transition-transform duration-300 z-40 shadow-2xl flex flex-col
       `}>
         <div className="p-8 hidden md:block shrink-0">
-          <h1 className="text-3xl font-black border-b-2 border-green-500 pb-3">彰基 CCH</h1>
-          <p className="text-lg text-green-300 mt-3 font-bold">腹膜透析室衛教</p>
+          <h1 className="text-3xl font-black border-b-2 border-green-500 pb-3">彰基 PD</h1>
+          <p className="text-lg text-green-300 mt-3 font-bold">腹膜炎防治網</p>
         </div>
 
         <nav className="mt-4 px-4 space-y-4 overflow-y-auto flex-1 pb-8">
@@ -45,8 +45,8 @@ export const Layout: React.FC<LayoutProps> = ({ children, activeSection, onSecti
                 setIsSidebarOpen(false);
               }}
               className={`w-full flex items-center space-x-4 px-5 py-4 rounded-xl transition-all ${activeSection === item.id
-                  ? 'bg-green-500 text-white shadow-lg scale-105'
-                  : 'hover:bg-green-700 text-green-100'
+                ? 'bg-green-500 text-white shadow-lg scale-105'
+                : 'hover:bg-green-700 text-green-100'
                 }`}
             >
               <span className="text-3xl" aria-hidden="true">{item.icon}</span>
@@ -65,7 +65,7 @@ export const Layout: React.FC<LayoutProps> = ({ children, activeSection, onSecti
       </aside>
 
       {/* Main Content */}
-      <main className="flex-1 overflow-y-auto bg-white min-h-screen p-6 md:p-12">
+      <main className="flex-1 overflow-y-auto bg-white min-h-screen p-4 md:p-12">
         <div className="max-w-4xl mx-auto">
           {children}
         </div>

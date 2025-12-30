@@ -14,18 +14,18 @@ const App: React.FC = () => {
     switch (activeSection) {
       case SectionId.Home:
         return (
-          <div className="space-y-12 animate-fadeIn">
-            <section className="bg-slate-900 rounded-[40px] p-10 md:p-16 text-white shadow-2xl relative overflow-hidden">
+          <div className="space-y-8 md:space-y-12 animate-fadeIn">
+            <section className="bg-slate-900 rounded-[40px] p-6 md:p-16 text-white shadow-2xl relative overflow-hidden">
               <div className="relative z-10">
-                <h2 className="text-4xl md:text-6xl font-black mb-8 leading-tight">守護腹膜健康<br />告別腹膜炎</h2>
+                <h2 className="text-3xl md:text-6xl font-black mb-6 md:mb-8 leading-tight">守護腹膜健康<br />告別腹膜炎</h2>
                 <p className="text-xl md:text-2xl text-slate-300 leading-relaxed mb-10 max-w-2xl font-medium">
                   彰基 PD 團隊陪伴您。我們採用 ISPD 最新醫學實證指南，幫助您居家照護更安心。
                 </p>
-                <div className="flex flex-wrap gap-6">
-                  <button onClick={() => setActiveSection(SectionId.Diagnosis)} className="bg-red-600 hover:bg-red-700 text-white px-10 py-5 rounded-2xl text-2xl font-black shadow-xl transition-all hover:scale-105 active:scale-95">
+                <div className="flex flex-wrap gap-4 md:gap-6">
+                  <button onClick={() => setActiveSection(SectionId.Diagnosis)} className="bg-red-600 hover:bg-red-700 text-white px-6 py-4 md:px-10 md:py-5 rounded-2xl text-xl md:text-2xl font-black shadow-xl transition-all hover:scale-105 active:scale-95">
                     居家急救診斷 🩺
                   </button>
-                  <button onClick={() => setActiveSection(SectionId.Prevention)} className="bg-green-600 hover:bg-green-700 text-white px-10 py-5 rounded-2xl text-2xl font-black shadow-xl transition-all hover:scale-105 active:scale-95">
+                  <button onClick={() => setActiveSection(SectionId.Prevention)} className="bg-green-600 hover:bg-green-700 text-white px-6 py-4 md:px-10 md:py-5 rounded-2xl text-xl md:text-2xl font-black shadow-xl transition-all hover:scale-105 active:scale-95">
                     預防技巧教學 🛡️
                   </button>
                 </div>
@@ -52,7 +52,7 @@ const App: React.FC = () => {
             <h2 className="text-4xl font-black text-slate-900 border-l-8 border-indigo-600 pl-6 mb-10">
               腹膜炎是怎麼發生的？
             </h2>
-            <div className="bg-white p-10 rounded-[40px] shadow-xl border border-slate-200 space-y-12">
+            <div className="bg-white p-6 md:p-10 rounded-[40px] shadow-xl border border-slate-200 space-y-8 md:space-y-12">
               <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
                 {[
                   { icon: '🧫', title: '病原菌', desc: '金黃色葡萄球菌最常見' },
