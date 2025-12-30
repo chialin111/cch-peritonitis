@@ -9,7 +9,7 @@ export const NAV_ITEMS: NavItem[] = [
   { id: SectionId.Diagnosis, label: '居家診斷', icon: '🩺' },
   { id: SectionId.Prevention, label: '預防醫學', icon: '🛡️' },
   { id: SectionId.Treatment, label: '治療簡介', icon: '💊' },
-  { id: SectionId.AIConsultant, label: 'AI 衛教助手', icon: '🤖' }
+
 ];
 
 export const RISK_FACTORS: RiskFactor[] = [

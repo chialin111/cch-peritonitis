@@ -3,28 +3,12 @@ import React, { useState } from 'react';
 import { SectionId } from './types';
 import { RISK_FACTORS, PREVENTION_RULES } from './constants';
 import { Layout } from './components/Layout';
-import { getMedicalAdvice } from './services/geminiService';
+
 import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, Cell, LabelList } from 'recharts';
 
 const App: React.FC = () => {
   const [activeSection, setActiveSection] = useState<SectionId>(SectionId.Home);
-  const [aiInput, setAiInput] = useState('');
-  const [aiMessages, setAiMessages] = useState<{ role: 'user' | 'ai'; text: string }[]>([]);
-  const [isAiLoading, setIsAiLoading] = useState(false);
 
-  const handleAiSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    if (!aiInput.trim()) return;
-
-    const userMsg = aiInput;
-    setAiInput('');
-    setAiMessages(prev => [...prev, { role: 'user', text: userMsg }]);
-    setIsAiLoading(true);
-
-    const advice = await getMedicalAdvice(userMsg);
-    setAiMessages(prev => [...prev, { role: 'ai', text: advice }]);
-    setIsAiLoading(false);
-  };
 
   const renderSection = () => {
     switch (activeSection) {
@@ -32,8 +16,8 @@ const App: React.FC = () => {
         return (
           <div className="space-y-12 animate-fadeIn">
             <section className="bg-slate-900 rounded-[40px] p-10 md:p-16 text-white shadow-2xl relative overflow-hidden">
-               <div className="relative z-10">
-                <h2 className="text-4xl md:text-6xl font-black mb-8 leading-tight">守護腹膜健康<br/>告別腹膜炎</h2>
+              <div className="relative z-10">
+                <h2 className="text-4xl md:text-6xl font-black mb-8 leading-tight">守護腹膜健康<br />告別腹膜炎</h2>
                 <p className="text-xl md:text-2xl text-slate-300 leading-relaxed mb-10 max-w-2xl font-medium">
                   彰基 PD 團隊陪伴您。我們採用 ISPD 最新醫學實證指南，幫助您居家照護更安心。
                 </p>
@@ -122,26 +106,26 @@ const App: React.FC = () => {
                     <div className="flex items-center gap-2"><span className="w-6 h-6 bg-amber-600 rounded-lg"></span><span className="text-xl font-bold">中高風險</span></div>
                   </div>
                 </div>
-                
+
                 <div className="h-[600px] w-full min-w-[600px]">
                   <ResponsiveContainer width="100%" height="100%">
-                    <BarChart 
-                      data={chartData} 
-                      layout="vertical" 
+                    <BarChart
+                      data={chartData}
+                      layout="vertical"
                       margin={{ left: 40, right: 100, top: 20, bottom: 20 }}
                       barSize={60}
                     >
                       <CartesianGrid strokeDasharray="5 5" horizontal={false} stroke="#e2e8f0" />
                       <XAxis type="number" domain={[0, 11]} hide />
-                      <YAxis 
-                        dataKey="name" 
-                        type="category" 
-                        width={220} 
+                      <YAxis
+                        dataKey="name"
+                        type="category"
+                        width={220}
                         tick={{ fontSize: 22, fontWeight: 900, fill: '#1e293b' }}
                         axisLine={false}
                         tickLine={false}
                       />
-                      <Tooltip 
+                      <Tooltip
                         cursor={{ fill: '#f8fafc' }}
                         contentStyle={{ borderRadius: '20px', border: 'none', boxShadow: '0 10px 15px -3px rgba(0,0,0,0.1)', fontSize: '20px', fontWeight: 'bold' }}
                       />
@@ -149,11 +133,11 @@ const App: React.FC = () => {
                         {chartData.map((entry, index) => (
                           <Cell key={`cell-${index}`} fill={entry.color} />
                         ))}
-                        <LabelList 
-                          dataKey="levelText" 
-                          position="right" 
-                          offset={20} 
-                          style={{ fontSize: '24px', fontWeight: '900', fill: '#1e293b' }} 
+                        <LabelList
+                          dataKey="levelText"
+                          position="right"
+                          offset={20}
+                          style={{ fontSize: '24px', fontWeight: '900', fill: '#1e293b' }}
                         />
                       </Bar>
                     </BarChart>
@@ -193,8 +177,8 @@ const App: React.FC = () => {
                   <div className="text-8xl mb-6">🥛</div>
                   <h4 className="font-black text-3xl mb-4">透析液混濁</h4>
                   <p className="text-xl leading-relaxed font-bold text-slate-700">
-                    最簡單的方法：<br/>
-                    <span className="text-red-600">將引流袋放在報紙或手機上</span><br/>
+                    最簡單的方法：<br />
+                    <span className="text-red-600">將引流袋放在報紙或手機上</span><br />
                     若看不清文字，請立即就醫！
                   </p>
                 </div>
@@ -256,9 +240,9 @@ const App: React.FC = () => {
               </div>
               <div className="bg-green-50 p-12 rounded-[40px] border-2 border-green-200 flex flex-col items-center justify-center text-center space-y-8 shadow-inner">
                 <div className="text-9xl">🧴</div>
-                <h3 className="font-black text-4xl text-green-900">核心精神：<br/>無菌觀念</h3>
+                <h3 className="font-black text-4xl text-green-900">核心精神：<br />無菌觀念</h3>
                 <p className="text-2xl text-green-800 leading-relaxed font-bold">
-                  「只要碰到不該碰的地方，<br/>就假設它已經髒了。」
+                  「只要碰到不該碰的地方，<br />就假設它已經髒了。」
                 </p>
                 <div className="bg-white p-8 rounded-3xl shadow-sm italic text-xl font-bold text-slate-600">
                   "寧可浪費一組管路，也不要讓細菌進入腹腔。"
@@ -298,69 +282,7 @@ const App: React.FC = () => {
           </div>
         );
 
-      case SectionId.AIConsultant:
-        return (
-          <div className="h-[calc(100vh-180px)] md:h-[calc(100vh-250px)] flex flex-col bg-white rounded-[40px] shadow-2xl border border-slate-200 overflow-hidden relative">
-            <div className="p-6 md:p-8 bg-green-600 text-white flex items-center justify-between shadow-md shrink-0 relative z-20">
-              <div className="pr-12">
-                <h3 className="text-2xl md:text-3xl font-black leading-tight">彰基 AI 衛教助手</h3>
-                <p className="text-base md:text-lg opacity-90 font-bold mt-2 leading-relaxed">提供專業衛教諮詢</p>
-              </div>
-              <div className="text-5xl md:text-6xl select-none">🤖</div>
-            </div>
-            
-            <div className="flex-1 overflow-y-auto p-6 md:p-8 space-y-8 bg-slate-50 relative z-10">
-              {aiMessages.length === 0 && (
-                <div className="text-center text-slate-400 mt-12 md:mt-20 space-y-6">
-                  <div className="text-8xl">💬</div>
-                  <p className="text-2xl font-bold px-4 text-slate-500">請試著問我：「腹膜炎會好嗎？」</p>
-                  <p className="text-xl font-medium max-w-lg mx-auto italic px-4">
-                    我是根據專業醫療指南訓練的助手，可以解答您的照護難題。
-                  </p>
-                </div>
-              )}
-              {aiMessages.map((msg, i) => (
-                <div key={i} className={`flex ${msg.role === 'user' ? 'justify-end' : 'justify-start'}`}>
-                  <div className={`max-w-[85%] p-6 md:p-8 rounded-[32px] shadow-sm ${
-                    msg.role === 'user' 
-                      ? 'bg-green-600 text-white rounded-tr-none text-xl md:text-2xl font-bold' 
-                      : 'bg-white text-slate-900 rounded-tl-none border-2 border-slate-100 text-xl md:text-2xl font-medium leading-loose'
-                  }`}>
-                    <p className="whitespace-pre-wrap">{msg.text}</p>
-                  </div>
-                </div>
-              ))}
-              {isAiLoading && (
-                <div className="flex justify-start">
-                  <div className="bg-white p-6 md:p-8 rounded-[32px] rounded-tl-none border-2 border-slate-100 animate-pulse">
-                    <div className="flex gap-4">
-                      <div className="w-4 h-4 bg-slate-400 rounded-full animate-bounce"></div>
-                      <div className="w-4 h-4 bg-slate-400 rounded-full animate-bounce delay-75"></div>
-                      <div className="w-4 h-4 bg-slate-400 rounded-full animate-bounce delay-150"></div>
-                    </div>
-                  </div>
-                </div>
-              )}
-            </div>
 
-            <form onSubmit={handleAiSubmit} className="p-4 md:p-6 bg-white border-t-2 border-slate-100 flex gap-3 md:gap-4 shrink-0 relative z-20">
-              <input
-                type="text"
-                value={aiInput}
-                onChange={(e) => setAiInput(e.target.value)}
-                placeholder="請輸入您的問題..."
-                className="flex-1 px-6 md:px-8 py-4 md:py-5 text-xl md:text-2xl border-2 border-slate-200 rounded-[30px] focus:outline-none focus:ring-4 focus:ring-green-500 font-bold"
-              />
-              <button
-                type="submit"
-                disabled={isAiLoading}
-                className="bg-green-600 text-white px-6 md:px-10 rounded-[30px] text-xl md:text-2xl font-black hover:bg-green-700 disabled:opacity-50 shadow-xl transition-colors shrink-0"
-              >
-                傳送
-              </button>
-            </form>
-          </div>
-        );
 
       default:
         return (

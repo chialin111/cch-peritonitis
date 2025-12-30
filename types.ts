@@ -6,7 +6,7 @@ export enum SectionId {
   Diagnosis = 'diagnosis',
   Prevention = 'prevention',
   Treatment = 'treatment',
-  AIConsultant = 'ai-consultant'
+
 }
 
 export interface NavItem {
