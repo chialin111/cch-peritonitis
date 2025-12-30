@@ -1,0 +1,7 @@
+{
+  "name": "彰基腹膜透析腹膜炎防治網",
+  "description": "提供彰化基督教醫院腹膜透析病友關於腹膜炎防治的互動式教育平台，包含最新醫學實證的衛教資訊與 AI 諮詢助手。",
+  "requestFramePermissions": [
+    "camera"
+  ]
+}
